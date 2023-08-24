@@ -10,17 +10,22 @@ function modals() {
         if (e.target) {
           e.preventDefault();
         }
+        console.log(scroll);
         windows.forEach(item => {
           item.style.display = "none";
         });
 
         modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+        document.body.style.marginRight = "15px";
       });
     });
 
     close.forEach(item => {
       item.addEventListener("click", () => {
         modal.style.display = "none";
+        document.body.style.overflow = "";
+        document.body.style.marginRight = `0px`;
       });
     });
 
@@ -29,8 +34,11 @@ function modals() {
         e.target.classList.contains("popup_engineer") ||
         e.target.classList.contains("popup") ||
         e.target.classList.contains("popup_calc")
-      )
+      ) {
         modal.style.display = "none";
+        document.body.style.overflow = "";
+        document.body.style.marginRight = `0px`;
+      }
     });
   }
 
@@ -39,6 +47,7 @@ function modals() {
       document.querySelector(selector).style.display = "block";
     }, time);
   }
+
   // showModalByTime(".popup", 60000);
   bindModal(".popup_engineer_btn", ".popup_engineer", ".popup_close");
   bindModal(".phone_link", ".popup", ".popup_close");
